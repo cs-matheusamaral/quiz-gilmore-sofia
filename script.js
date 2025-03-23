@@ -17,7 +17,7 @@ const correctAnswers = {
     // Adicione as respostas corretas das outras perguntas
 };
 
-let timeLeft = 90;
+let timeLeft = 300;
 let timer = setInterval(() => {
     document.getElementById("time").textContent = timeLeft;
     if (timeLeft === 0) {
