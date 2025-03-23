@@ -1,5 +1,5 @@
 const correctAnswers = {
-    q1: "c",
+	q1: "c",
 	q2: "e",
 	q3: "b",
 	q4: "a",
@@ -14,10 +14,10 @@ const correctAnswers = {
 	q13: "c",
 	q14: "b",
 	q15: "e",
-    // Adicione as respostas corretas das outras perguntas
+   // Adicione as respostas corretas das outras perguntas
 };
 
-let timeLeft = 300;
+let timeLeft = 300; // 5 minutos
 let timer = setInterval(() => {
     document.getElementById("time").textContent = timeLeft;
     if (timeLeft === 0) {
@@ -27,7 +27,10 @@ let timer = setInterval(() => {
     timeLeft--;
 }, 1000);
 
-document.getElementById("bg-music").play();
+// Música: agora funciona corretamente
+const music = document.getElementById("bg-music");
+document.getElementById("play-music").addEventListener("click", () => music.play());
+document.getElementById("pause-music").addEventListener("click", () => music.pause());
 
 function submitQuiz() {
     clearInterval(timer);
@@ -36,14 +39,14 @@ function submitQuiz() {
     const form = document.getElementById("quiz-form");
 
     for (let key in correctAnswers) {
-        const selected = form.querySelector(input[name="${key}"]:checked);
+        const selected = form.querySelector(`input[name="${key}"]:checked`);
         if (selected && selected.value === correctAnswers[key]) {
             score++;
         }
     }
 
-    let resultText = Você acertou ${score} de 10 perguntas. ;
-    resultText += score >= 7 ? "Parabéns, Sofia. Você é uma grande fã!" : "Ainda precisa assistir mais episódios!";
+    let resultText = `Você acertou ${score} de 10 perguntas. `;
+    resultText += score >= 7 ? "Parabéns, você é um grande fã!" : "Ainda precisa assistir mais episódios!";
 
     document.getElementById("result").textContent = resultText;
     document.getElementById("result").classList.remove("hidden");
